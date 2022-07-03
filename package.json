@@ -1,0 +1,17 @@
+{
+  "name": "tac-host-fivem-bot",
+  "version": "1.0.0",
+  "description": "Updates your bot Status to show connected users",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "tsc"
+  },
+  "author": "Faster#0001",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.27.2",
+    "discord.js": "^14.0.0-dev.1656864763-c7a205f",
+    "typescript": "^4.7.4"
+  }
+}
