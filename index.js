@@ -26,12 +26,12 @@ const config = (players) => {
             INSÉREZ VOTRE IP CI-DESSOUS
             EX: tacos01.tac-host.com:30120
         */
-        ip: 'tacos01.tac-host.com:30100',
+        ip: 'YOUR IP',
         /*
             Obtenez votre token ici: https://discord.com/developers/applications
             Get your token here: https://discord.com/developers/applications
         */
-        token: 'ODIwNDc3MzY4MDQ0ODc5OTEz.GlbP0Z.jpctJ2HWNWsPZovXCq0uTzXhLZcds_v-iwVZVE'
+        token: 'YOUR TOKEN'
     };
 };
 //UPDATE CONFIG ABOVE
