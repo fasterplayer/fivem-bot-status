@@ -40,7 +40,7 @@ client.once('ready', () => {
         finally {
             client.user.setActivity({
                 type: v10_1.ActivityType.Watching,
-                name: text
+                name: `${players} ${text}`
             });
         }
     }), 15000);
