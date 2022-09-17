@@ -12,37 +12,16 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-//UPDATE CONFIG BELOW
-//MODIFIÉ LA CONFIGURATION CI-DESSOUS
-const config = (players) => {
-    return {
-        /*
-            ${players} sera remplacé par le nombre de joueurs
-            ${players} will be replaced by the amount of players
-        */
-        text: `${players} players/joueurs`,
-        /*
-            INSERT YOUR IP BELOW
-            INSÉREZ VOTRE IP CI-DESSOUS
-            EX: tacos01.tac-host.com:30120
-        */
-        ip: 'YOUR IP',
-        /*
-            Obtenez votre token ici: https://discord.com/developers/applications
-            Get your token here: https://discord.com/developers/applications
-        */
-        token: 'YOUR TOKEN'
-    };
-};
-//UPDATE CONFIG ABOVE
-//MODIFIÉ LA CONFIGURATION CI-DESSUS
+const token = process.env.BOT_TOKEN;
+const text = process.env.STATUS_TEXT;
+const ip = process.env.FIVEM_IP;
 const v10_1 = require("discord-api-types/v10");
 const discord_js_1 = require("discord.js");
 const axios_1 = __importDefault(require("axios"));
 const client = new discord_js_1.Client({
     intents: []
 });
-if (!config().ip || !config().text || !config().token) {
+if (!ip || !text || !token) {
     console.log('UNE INFORMATION DE CONFIG EST MANQUANTE\nA CONFIG INFORMATION IS MISSING');
 }
 client.once('ready', () => {
@@ -50,23 +29,23 @@ client.once('ready', () => {
     setInterval(() => __awaiter(void 0, void 0, void 0, function* () {
         let players = 0;
         try {
-            players = (yield (0, axios_1.default)(`http://${config().ip}/players.json`, {
+            players = (yield (0, axios_1.default)(`http://${ip}/players.json`, {
                 method: 'POST',
                 responseType: 'json'
             })).data.length;
         }
         catch (_a) {
-            console.log(`Can't communicate with ${config().ip ? config().ip : 'UNDEFINED'}`);
+            console.log(`Can't communicate with ${ip}`);
         }
         finally {
             client.user.setActivity({
                 type: v10_1.ActivityType.Watching,
-                name: config(players).text
+                name: text
             });
         }
     }), 15000);
 });
-client.login(config().token);
+client.login(token);
 process.on('unhandledRejection', (err) => {
     console.log(err);
 });
